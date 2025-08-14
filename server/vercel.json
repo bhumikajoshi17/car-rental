@@ -16,5 +16,12 @@
             "src": "/(.*)",
             "dest": "server.js"
         }
-    ]
+    ],
+    
+        "rewrite":[
+            {
+                "source":"/(.*)","destination": "/"
+            }
+        ]
+    
 }
