@@ -65,7 +65,7 @@ export const AppProvider=({children})=>{
             setToken(token);
             fetchCars();
         }
-        
+         fetchCars();
     }, []);
 
     // useEffect to fetch user data if token is present
