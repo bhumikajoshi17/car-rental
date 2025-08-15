@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";   
 
-axios.defaults.baseURL=  import.meta.env.REACT_APP_API_URL;
+axios.defaults.baseURL= import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL;
 
 export const AppContext = createContext();
 
