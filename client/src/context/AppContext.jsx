@@ -65,6 +65,7 @@ export const AppProvider=({children})=>{
             setToken(token);
             fetchCars();
         }
+        
     }, []);
 
     // useEffect to fetch user data if token is present
@@ -73,6 +74,7 @@ export const AppProvider=({children})=>{
           axios.defaults.headers.common['Authorization'] = token;
           fetchUser();
         }
+         fetchCars();
     }, [token]);
 
     const value={
