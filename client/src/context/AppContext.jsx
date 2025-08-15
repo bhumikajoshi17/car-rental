@@ -121,15 +121,28 @@ export const AppProvider = ({ children }) => {
         }
     };
 
+    // const fetchCars = async () => {
+    //     try {
+    //         const { data } = await axios.get('/api/user/cars');
+    //         console.log("Fetched Cars:", data);
+    //         data.success ? setCars(data.cars) : toast.error(data.message);
+    //     } catch (error) {
+    //         toast.error(error.message);
+    //     }
+    // };
+
     const fetchCars = async () => {
-        try {
-            const { data } = await axios.get('/api/user/cars');
-            console.log("Fetched Cars:", data);
-            data.success ? setCars(data.cars) : toast.error(data.message);
-        } catch (error) {
-            toast.error(error.message);
-        }
-    };
+    console.log("fetchCars() called");
+    try {
+        const { data } = await axios.get('/api/user/cars');
+        console.log("Fetched Cars:", data);
+        data.success ? setCars(data.cars) : toast.error(data.message);
+    } catch (error) {
+        console.error("Error fetching cars:", error);
+        toast.error(error.message);
+    }
+};
+
 
     const logout = () => {
         localStorage.removeItem('token');
