@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";   
 
-axios.defaults.baseURL= import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL;
+axios.defaults.baseURL= import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL
 
 export const AppContext = createContext();
 
@@ -24,7 +24,7 @@ export const AppProvider=({children})=>{
 
     const fetchUser = async ()=>{
         try {
-            const {data} = await axios.get('/api/user/data')
+            const {data} = await axios.get(`${import.meta.env.REACT_APP_API_URL}/api/user/data`)
             if(data.success){
                 setUser(data.user)
                 setIsOwner(data.user.role === 'owner')
@@ -40,7 +40,7 @@ export const AppProvider=({children})=>{
     // function to fetch all cars from the server
     const fetchCars = async () => {
         try {
-            const { data } = await axios.get(`/api/cars`);
+            const { data } = await axios.get(`${import.meta.env.REACT_APP_API_URL}/api/user/cars`);
             console.log("Fetched Cars:", data);
 
             data.success?  setCars(data.cars) : toast.error(data.message);
