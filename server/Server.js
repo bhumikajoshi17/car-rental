@@ -26,3 +26,5 @@ app.use("/api/bookings" ,bookingRouter)
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, ()=> console.log(`Server Running on port ${PORT}`))
+
+export default app;
