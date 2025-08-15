@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";   
 
-axios.defaults.baseURL= import.meta.env.VITE_BASE_URL
+axios.defaults.baseURL= import.meta.env.VITE_API_URL
 
 export const AppContext = createContext();
 
@@ -40,7 +40,7 @@ export const AppProvider=({children})=>{
     // function to fetch all cars from the server
     const fetchCars = async () => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/cars`);
+            const { data } = await axios.get(`/api/cars`);
             data.success?  setCars(data.cars) : toast.error(data.message);
         } catch (error) {
             toast.error(error.message);
@@ -70,7 +70,7 @@ export const AppProvider=({children})=>{
     // useEffect to fetch user data if token is present
     useEffect(() => {
         if (token) {
-          axios.defaults.headers.common['Authorization'] = ` ${token}`;
+          axios.defaults.headers.common['Authorization'] = token;
           fetchUser();
         }
     }, [token]);
