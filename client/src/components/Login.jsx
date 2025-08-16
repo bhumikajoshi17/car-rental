@@ -28,7 +28,7 @@ const Login = () => {
 
                 setShowLogin(false)
                 toast.success(state === "login" ? "Logged in successfully" : "Account created successfully");
-                navigate('/')
+                navigate('/dashboard')
                 // setEmail("")
                 // setName("")
                 // setPassword("")
