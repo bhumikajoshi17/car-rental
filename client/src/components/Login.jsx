@@ -12,16 +12,21 @@ const Login = () => {
     const [password, setPassword] = React.useState("");
 
     const onSubmitHandler = async (event)=>{
-       
-        try {
-             event.preventDefault();
+          event.preventDefault();
+         try {
+             
              const {data}  = await axios.post(`/api/user/${state}`,{name,email,password})
 
              if(data.success){
-                navigate('/')
+
+                // navigate('/')
                 setToken(data.token)
                 localStorage.setItem('token',data.token)
+
+                axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
                 setShowLogin(false)
+                toast.success(state === "login" ? "Logged in successfully" : "Account created successfully");
+                navigate('/dashboard')
                 // setEmail("")
                 // setName("")
                 // setPassword("")
