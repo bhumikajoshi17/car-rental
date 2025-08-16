@@ -73,7 +73,7 @@ export const AppProvider=({children})=>{
     // useEffect to fetch user data if token is present
     useEffect(() => {
         if (token) {
-          axios.defaults.headers.common['Authorization'] = ` ${token}`;
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
           fetchUser();
         }
          fetchCars();

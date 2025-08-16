@@ -29,7 +29,7 @@ const Dashboard = () => {
     // Fetch dashboard data
         const fetchDashboardData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/owner/dashboard`);
+                const response = await axios.get(`${process.env.VITE_API_URL}/api/owner/dashboard`);
                 console.log("Dashboard API Response:", response.data);
                 if(response.data.success){
                  setData(response.data.dashboardData)
