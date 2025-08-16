@@ -26,7 +26,7 @@ const Login = () => {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
                 setShowLogin(false)
                 toast.success(state === "login" ? "Logged in successfully" : "Account created successfully");
-                navigate('/dashboard')
+                navigate('/owner')
                 // setEmail("")
                 // setName("")
                 // setPassword("")
