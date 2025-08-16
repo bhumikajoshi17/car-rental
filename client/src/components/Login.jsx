@@ -18,8 +18,8 @@ const Login = () => {
              const {data}  = await axios.post(`/api/user/${state}`,{name,email,password})
 
              if(data.success){
-
-                // navigate('/')
+                console.log("navigating to dashboard...");
+                navigate('/owner')
                 setToken(data.token)
                 localStorage.setItem('token',data.token)
 
