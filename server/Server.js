@@ -13,9 +13,23 @@ const app =express()
 // Connect Database
 await connectDB()
 
+const allowedOrigins = [
+  "http://localhost:5173", // for local dev
+  "https://car-rental-wheat-zeta.vercel.app", // your deployed frontend
+];
+
+
 // Middleware
 
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
+}));
 app.use(express.json());
 
 app.get('/' , (req,res)=>res.send("Server is Running!"))
