@@ -14,25 +14,32 @@ const app =express()
 await connectDB()
 
 const allowedOrigins = [
-  "http://localhost:5173", // for local dev
-  "https://car-rental-wheat-zeta.vercel.app", // your deployed frontend
+  "http://localhost:5173", // local
+  "https://car-rental-wheat-zeta.vercel.app", // deployed frontend
 ];
 
-
 // Middleware
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
+    credentials: true,
+  })
+);
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods:["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+// ✅ Handle preflight requests properly
+app.options("*", cors());
 
-}));
+
+
+
+
 app.use(express.json());
 
 app.get('/' , (req,res)=>res.send("Server is Running!"))
