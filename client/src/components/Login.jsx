@@ -17,13 +17,13 @@ const Login = () => {
              
              const {data}  = await axios.post(`/api/user/${state}`,{name,email,password})
 
+             console.log("response from backend:", data);
+
              if(data.success){
                 console.log("navigating to dashboard...");
-                navigate('/owner')
                 setToken(data.token)
                 localStorage.setItem('token',data.token)
 
-                axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
                 setShowLogin(false)
                 toast.success(state === "login" ? "Logged in successfully" : "Account created successfully");
                 navigate('/owner')
@@ -32,9 +32,11 @@ const Login = () => {
                 // setPassword("")
                 }
                 else{
+                    console.log("Login failed:", data.message);
                     toast.error(data.message );
                 }
         } catch (error) {
+            console.log("Error occurred:", error);
             toast.error(error.message );
 
         }
