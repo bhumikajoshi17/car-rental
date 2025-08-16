@@ -1,10 +1,12 @@
 import React from 'react'
 import { useAppContext } from '../context/AppContext'
+import {useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 
 const Login = () => {
 
-    const {setShowLogin , axios , setToken , navigate} = useAppContext()
+    const {setShowLogin , axios , setToken } = useAppContext()
+    const navigate = useNavigate()
 
     const [state, setState] = React.useState("login");
     const [name, setName] = React.useState("");
