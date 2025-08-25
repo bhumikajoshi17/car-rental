@@ -12,12 +12,13 @@ const app =express()
 
 // Connect Database
 await connectDB()
-
+console.log('avfds')
 const allowedOrigins = [
   "http://localhost:5173", // local
   "https://car-rental-wheat-zeta.vercel.app", // deployed frontend
 ];
 
+console.log('sdfv')
 // Middleware
 app.use(
   cors({
@@ -38,9 +39,10 @@ app.use(
 
 
 
-
+console.log('options')
 
 app.use(express.json());
+console.log('json')
 
 app.get('/' , (req,res)=>res.send("Server is Running!"))
 app.use('/api/user', userRouter)
