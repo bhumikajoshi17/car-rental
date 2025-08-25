@@ -9,8 +9,7 @@ import connectDB from './CONFIGS/db.js';
 // Initialize Express App
 
 const app =express()
-try(
-
+try{
 
 // Connect Database
 await connectDB()
@@ -68,7 +67,7 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, ()=> console.log(`Server Running on port ${PORT}`))
 
-)
+}
 catch (e) {
   console.log(e)
 }
