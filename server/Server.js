@@ -49,7 +49,7 @@ app.options("*", cors(
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
     credentials: true,
   }
-);
+));
 
 
 
