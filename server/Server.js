@@ -9,6 +9,8 @@ import connectDB from './CONFIGS/db.js';
 // Initialize Express App
 
 const app =express()
+try(
+
 
 // Connect Database
 await connectDB()
@@ -20,6 +22,7 @@ const allowedOrigins = [
 
 console.log('sdfv')
 // Middleware
+
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -35,7 +38,7 @@ app.use(
 );
 
 // ✅ Handle preflight requests properly
-// app.options("*", cors());
+app.options("*", cors());
 
 
 
@@ -52,5 +55,10 @@ app.get('/' , (req,res)=>res.send("Server is Running!"))
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, ()=> console.log(`Server Running on port ${PORT}`))
+
+)
+catch (e) {
+  console.log(e)
+}
 
 export default app;
