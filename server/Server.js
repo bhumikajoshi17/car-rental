@@ -38,7 +38,19 @@ app.use(
 );
 
 // ✅ Handle preflight requests properly
-app.options("*", cors());
+app.options("*", cors(
+  {
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
+    credentials: true,
+  }
+));
 
 
 
